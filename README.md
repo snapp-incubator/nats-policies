@@ -15,3 +15,38 @@ NATS serves as a central messaging queue utilized by numerous consumers within a
 
 - **Determining Consumer Starting Points**:
   In the event of losing a consumer or creating a new one, you need to specify a practical starting point. This could be the beginning of the stream, the most recent message, or a specified historical message, depending on your service's ability to handle message replay and its consistency requirements.
+
+## Quality of Service
+
+When your application (referring to consumer applications) can tolerate message loss (note that messages are not typically lost under normal conditions;
+loss occurs when the consumer is either not processing data or cannot handle it properly), it is advisable to use NATS core subscriptions.
+To use NATS core subscriptions, simply avoid upgrading your connection to JetStream.
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"runtime"
+
+	"github.com/nats-io/nats.go"
+)
+
+func main() {
+	// Connect to a NATS server
+	nc, err := nats.Connect(nats.DefaultURL)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer nc.Close()
+
+	// Simple Async Subscriber
+	nc.Subscribe("my.subject", func(m *nats.Msg) {
+		fmt.Printf("Received a message: %s\n", string(m.Data))
+	})
+
+	// Keep the connection alive
+	runtime.Goexit()
+}
+```
