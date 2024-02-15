@@ -34,14 +34,15 @@ import (
 )
 
 func main() {
-	// Connect to a NATS server
+	// Connect to a NATS server (127.0.0.1:4222), server
+	// has Jetstream enabled and "my.subject" belongs to a stream.
 	nc, err := nats.Connect(nats.DefaultURL)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer nc.Close()
 
-	// Simple Async Subscriber
+	// Async Subscriber using NATS core
 	nc.Subscribe("my.subject", func(m *nats.Msg) {
 		fmt.Printf("Received a message: %s\n", string(m.Data))
 	})
