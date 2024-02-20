@@ -16,6 +16,9 @@ NATS serves as a central messaging queue utilized by numerous consumers within a
 - **Determining Consumer Starting Points**:
   In the event of losing a consumer or creating a new one, you need to specify a practical starting point. This could be the beginning of the stream, the most recent message, or a specified historical message, depending on your service's ability to handle message replay and its consistency requirements.
 
+- **Having Metrics over Consumers and Producers**:
+  Using NATS (specially NATS Core) we don't have any detailed metric on server-side about the number of produced or consumed messages so it should be implemented over producers and consumers. These metrics should have cooresponding alerts to notify about the times that consumers and producers has zero message per second.
+
 ## Quality of Service
 
 When your application (referring to consumer applications) can tolerate message loss (note that messages are not typically lost under normal conditions;
