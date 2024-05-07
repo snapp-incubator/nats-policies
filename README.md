@@ -19,6 +19,12 @@ NATS serves as a central messaging queue utilized by numerous consumers within a
 - **Having Metrics over Consumers and Producers**:
   Using NATS (specially NATS Core) we don't have any detailed metric on server-side about the number of produced or consumed messages so it should be implemented over producers and consumers. These metrics should have cooresponding alerts to notify about the times that consumers and producers has zero message per second.
 
+## What clients should have?
+
+- Latency
+- Number of published / consumed messages
+- Using pull-based consumers (latest NATS)
+
 ## Quality of Service
 
 When your application (referring to consumer applications) can tolerate message loss (note that messages are not typically lost under normal conditions;
