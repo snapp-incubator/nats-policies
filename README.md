@@ -21,9 +21,14 @@ NATS serves as a central messaging queue utilized by numerous consumers within a
 
 ## What clients should have?
 
-- Latency
-- Number of published / consumed messages
+- Metrics
+  - Latency
+  - Number of published / consumed messages
+- QoS
 - Using pull-based consumers (latest NATS)
+- Have more than one cluster
+- Authentication
+- Configuration
 
 ## Quality of Service
 
