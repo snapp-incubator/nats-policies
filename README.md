@@ -26,7 +26,7 @@ NATS serves as a central messaging queue utilized by numerous consumers within a
   - Number of published / consumed messages
 - QoS
 - Using pull-based consumers (latest NATS)
-- Have more than one cluster
+- Have more than one cluster to seperate steams and their load into different clusters
 - Authentication
 - Configuration
 
