@@ -21,11 +21,11 @@ NATS serves as a central messaging queue utilized by numerous consumers within a
 
 ## What clients should have?
 
-- Metrics
-  - Latency
+- Define following metrics:
+  - Latency (using defined message header in the organization)
   - Number of published / consumed messages
-- QoS
-- Using pull-based consumers (latest NATS)
+- QoS (Quality of service)
+- Using pull-based consumers (having it using NATS SDK upgrade)
 - Have more than one cluster to seperate steams and their load into different clusters
 - Authentication
 - Configuration
